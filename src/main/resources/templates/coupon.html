@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Guest Coupon </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700" rel="stylesheet"></link>
+    <link rel="stylesheet" type="text/css" href="../../css/site.css"></link>
+
+</head>
+<body style="padding-top:50px;">
+ <div class="coupon content">
+     <div class="banner">
+         <div class="logo-left-clickable"></div>
+         <div class="logo-content">
+             <ul>
+                 <li>smart</li>
+                 <li>hotel</li>
+                 <li>360</li>
+             </ul>
+             <div class="bottom">
+                 coupon management
+             </div>
+         </div>
+         <div class="logout">
+             <a href="/logout">logout</a>
+         </div>
+     </div>
+     <div class="main">
+         <div class="back-link">
+             <a href="/guest">back to hotel guests</a>
+         </div>
+         <div class="coupon-list" th:object="${couponsModel}">
+            <ul>
+                <li th:each="item,i : *{couponList}"  class="coupon-item" th:value="*{couponList[__${i.index}__].id}">
+                    <div class="coupon-container">
+                        <div class="title" th:text="*{couponList[__${i.index}__].title}"></div>
+                        <div class="coupon-content">
+                            <div class="left-img">
+                                <img th:src="*{couponList[__${i.index}__].getImgSrc()}"></img>
+                            </div>
+                            <div class="right-content">
+                                <div class="description" th:text="*{couponList[__${i.index}__].description}"></div>
+                                <div class="print-btn popup" th:value="*{couponList[__${i.index}__].id}" >print</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coupon-item-detail modal hidden" th:value="*{couponList[__${i.index}__].id}" th:id="*{couponList[__${i.index}__].id}" >
+                        <div class="modal-content">
+                            <div class="close-modal">&nbsp;</div>
+                            <div class="detail-top">
+                                <div class="detail-title" th:text="*{couponList[__${i.index}__].title}"></div>
+                                <div class="detail-top-right">
+                                    <div class="print-btn preview" th:value="*{couponList[__${i.index}__].id}" >print</div>
+                                </div>
+                            </div>
+                            <div class="detail-middle">
+                                <div class="detail-img">
+                                    <img th:src="*{couponList[__${i.index}__].getImgSrc()}"></img>
+                                </div>
+                                <div class="detail-content">
+                                    <div class="customer">
+                                        <div class="gray-title">For customer:&nbsp;</div>
+                                        <div class="customer-text" th:text="*{guest.getFullName()}"></div>
+                                    </div>
+                                    <div class="detail-description" th:text="*{couponList[__${i.index}__].description}"></div>
+                                    <div class="gray-title detail-location-title">
+                                        Coupon eligible at the following location(s):
+                                    </div>
+                                    <div class="detail-company-location">
+                                        <div class="company-name" th:text="*{couponList[__${i.index}__].companyName}"></div>
+                                        <div class="company-address-1" th:text="*{couponList[__${i.index}__].addressLine1}"></div>
+                                        <div class="company-address-2" th:text="*{couponList[__${i.index}__].addressLine2}"></div>
+                                    </div>
+                                    <div class="redeemable" >
+                                        <div class="gray-title">Redeemable: </div>
+                                        <div class="redeemable-text" th:text="*{couponList[__${i.index}__].getRedeemableStr()}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detail-bottom">
+                                <div class="qr-img">
+                                    <img th:src="*{couponList[__${i.index}__].getQrCodeImgSrc()}"></img>
+                                </div>
+                            </div>
+                            <div class="print-bg"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+         </div>
+     </div>
+ </div>
+
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+  <script src="../../js/coupon.js"></script>
+
+</body>
+</html>

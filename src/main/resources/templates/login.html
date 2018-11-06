@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Coupon Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700" rel="stylesheet"></link>
+    <link rel="stylesheet" type="text/css" href="../../css/site.css"></link>
+
+</head>
+<body style="padding-top:50px;">
+ <div class="login content">
+     <div class="banner">
+         <div class="left">
+             <div class="logo-content">
+                 <ul>
+                     <li>smart</li>
+                     <li>hotel</li>
+                     <li>360</li>
+                 </ul>
+                 <div class="bottom">
+                     coupon management
+                 </div>
+             </div>
+         </div>
+         <div class="right"></div>
+     </div>
+     <div class="main">
+         <div class="login-form-container">
+             <form role="form" th:action="@{/formPost}" th:object="${loginUser}" method="POST">
+                 <div class="form-main">
+                     <div class="title">Username</div>
+                     <div class="input-box">
+                         <input type="input"  class="form-control" id="inputUsername" name="username" th:value="*{username}" tabindex="1" />
+                     </div>
+                     <div class="title">Password</div>
+                     <div class="input-box"  th:classappend="${loginState} ? '':'error'">
+                         <input type="password" class="form-control" id="inputPassword"  name="password" th:value="*{password}"  tabindex="2"/>
+                         <div class="error-message">The entered username or password is incorrect.</div>
+                     </div>
+                     <div class="submit" tabindex="3">Login</div>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+ <script src="../../js/login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,768 @@
+@font-face {
+    font-family: 'poppinsbold';
+    src: url('../font/poppins-bold-webfont.eot');
+    src: url('../font/poppins-bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/poppins-bold-webfont.woff2') format('woff2'),
+    url('../font/poppins-bold-webfont.woff') format('woff'),
+    url('../font/poppins-bold-webfont.ttf') format('truetype'),
+    url('../font/poppins-bold-webfont.svg#poppinsbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'poppinslight';
+    src: url('../font/poppins-light-webfont.eot');
+    src: url('../font/poppins-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/poppins-light-webfont.woff2') format('woff2'),
+    url('../font/poppins-light-webfont.woff') format('woff'),
+    url('../font/poppins-light-webfont.ttf') format('truetype'),
+    url('../font/poppins-light-webfont.svg#poppinslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'poppinsmedium';
+    src: url('../font/poppins-medium-webfont.eot');
+    src: url('../font/poppins-medium-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/poppins-medium-webfont.woff2') format('woff2'),
+    url('../font/poppins-medium-webfont.woff') format('woff'),
+    url('../font/poppins-medium-webfont.ttf') format('truetype'),
+    url('../font/poppins-medium-webfont.svg#poppinsmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'poppinsregular';
+    src: url('../font/poppins-regular-webfont.eot');
+    src: url('../font/poppins-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/poppins-regular-webfont.woff2') format('woff2'),
+    url('../font/poppins-regular-webfont.woff') format('woff'),
+    url('../font/poppins-regular-webfont.ttf') format('truetype'),
+    url('../font/poppins-regular-webfont.svg#poppinsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'poppinssemibold';
+    src: url('../font/poppins-semibold-webfont.eot');
+    src: url('../font/poppins-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/poppins-semibold-webfont.woff2') format('woff2'),
+    url('../font/poppins-semibold-webfont.woff') format('woff'),
+    url('../font/poppins-semibold-webfont.ttf') format('truetype'),
+    url('../font/poppins-semibold-webfont.svg#poppinssemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html{
+
+}
+body{
+    font-size: 16px;
+    overflow-y:auto;
+    overflow-x: hidden;
+    padding:0 !important;
+    margin:0;
+    font-family: Poppins;
+}
+
+/*common*/
+.content .banner{
+    height:150px;
+    background-image: url("../images/apple-icon-114x114.png");
+    background-repeat: no-repeat;
+    background-size:60px 60px;
+    background-position: 168px 45px;
+    border-bottom:8px solid #253748;
+    position: relative;
+    margin-left:50px;
+}
+.content .banner > div{
+    display:inline-block;
+}
+.content .banner .logout{
+    position: absolute;
+    right:141px;
+    top:100px;
+}
+.content .banner .logout a{
+    text-transform: uppercase;
+    color:#5b8c90;
+    font-family: poppinsregular;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+.content .banner .logo-left-clickable{
+    position: absolute;
+    width:93px;
+    height: 93px;
+    cursor: pointer;
+    left:168px;
+    top:45px;
+}
+.content .banner .logo-content{
+    margin-top: 29px;
+    border-left:1px solid #707070;
+    margin-left:250px;
+    padding-left:30px;
+    height:93px;
+    cursor: pointer;
+}
+.content .banner .logo-content ul{
+    list-style: none;
+    margin-top:0;
+    padding-top:18px;
+    padding-left:0;
+    font-size: 27px;
+    margin-bottom: 0;
+}
+.content .banner .logo-content ul li{
+    display: inline-block;
+    font-family: poppinslight;
+    font-weight: 300;
+    color:#568c90;
+}
+.content .banner .logo-content ul li:nth-child(2){
+    font-weight: 600;
+    font-family: poppinssemibold;
+    color:#253748;
+    margin-left: -5px;
+}
+.content .banner .logo-content ul li:last-child{
+    color:#5b8c90;
+    font-size:10px;
+    vertical-align: top;
+}
+.content .banner .logo-content .bottom{
+    font-family: poppinsbold;
+    font-weight:700;
+    font-size:9px;
+    text-transform: uppercase;
+    letter-spacing: 4.2px;
+}
+.content .main {
+    background-color:#f9f9f9;
+    height: calc(100vh - 150px);
+}
+
+.error-message{
+    display: none;
+}
+div.input-box.error input{
+    background-color: #fce4e4;
+    border-bottom: 1px solid #cc0033 !important;
+}
+div.input-box.error .error-message{
+    display: inline-block;
+    color: #cc0033;
+    display: inline-block;
+    padding-top:10px;
+}
+
+
+.login.content{
+
+}
+.login.content .banner{
+    height: 312px;
+    text-align: right;
+    background-image:none;
+    border-bottom:0px;
+}
+.login.content .banner > div{
+    display:inline-block;
+}
+.login.content .banner .left{
+    width:40%;
+    height:100%;
+    vertical-align: top;
+    text-align: left;
+    background-image: url("../images/apple-icon-114x114.png");
+    background-repeat: no-repeat;
+    background-size:114px 114px;
+    background-position: 63px 80px;
+}
+.login.content .banner .logo-content{
+    margin-top: 50px;
+    border-left:1px solid #707070;
+    margin-left:210px;
+    padding-left:53px;
+    height:184px;
+}
+.login.content .banner .left ul{
+    list-style: none;
+    margin-top:0;
+    padding-top:37px;
+    padding-left:0;
+    font-size: 50px;
+    margin-bottom: 0;
+}
+.login.content .banner .left ul li{
+    display: inline-block;
+    font-family: poppinslight;
+    font-weight: 300;
+    color:#568c90;
+}
+.login.content .banner .left ul li:nth-child(2){
+    font-family: poppinssemibold;
+    font-weight: 600;
+    color:#253748;
+}
+.login.content .banner .left ul li:last-child{
+    font-family: poppinslight;
+    color:#5b8c90;
+    font-size:20px;
+    vertical-align: top;
+}
+.login.content .banner .left .bottom{
+    font-family: poppinsbold;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing: 6.8px;
+}
+.login.content .banner .right{
+    background-image: url("../images/room_detail.png");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px;
+    width:51.5%;
+}
+.login.content .main{
+    background-color: #253748;
+    height:calc(100vh - 312px);
+    color: #fff;
+    font-family: poppinssemibold;
+    font-weight: 600;
+    font-size: 18px;
+}
+.login.content .main .login-form-container{
+    width:500px;
+    margin:0px auto;
+    padding-top: 100px;
+}
+.login.content .main .login-form-container .form-main .title{
+    margin-top: 50px;
+}
+.login.content .main .login-form-container .form-main .input-box{
+    margin-top: 28px;
+}
+.login.content .main .login-form-container .form-main .input-box input{
+    border-top:0;
+    border-right:0;
+    border-bottom: 1px solid #fff;
+    border-left: 0;
+    background-color:#253748;
+    width:484px;
+    color:#fff;
+    font-family: poppinslight;
+    font-weight: 300;
+    font-size: 28px;
+    padding-left: 10px;
+    padding-bottom:9px;
+}
+.login.content .main .login-form-container .form-main .submit{
+    margin-left: 150px;
+    margin-top: 100px;
+    width:196px;
+    height: 35px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:1px solid #707070;
+    background-color: #fff;
+    color:#2e3a48;
+    cursor:pointer;
+    text-align: center;
+    padding-top: 16px;
+}
+
+/* guest */
+
+.guest.content .main{
+    padding:26px 140px 0 140px;
+}
+.guest.content .main .search{
+    display: table;
+    width: 100%;
+}
+.guest.content .main .search .title{
+    text-transform: uppercase;
+    display: table-cell;
+    font-size:36px;
+    color: #253748;
+    font-family: poppinsregular;
+}
+.guest.content .main .search .search-box{
+    text-align: right;
+    width:100%;
+    position: relative;
+}
+.guest.content .main .search .search-box .search-click{
+    position: absolute;
+    width:26px;
+    height: 26px;
+    cursor: pointer;
+    top:13px;
+    right: 13px;
+}
+.guest.content .main .search .search-box input{
+    font-family: poppinsregular;
+    line-height: 2.6em;
+    color:#253748;
+    font-size:20px;
+    width: 719px;
+    height: 50px;
+    background: url("../images/icons8-search@3x.png") no-repeat right 12px center;
+    background-size: 26px 26px;
+    padding-left: 12px;
+    border:1px solid #c4c4c4;
+}
+.guest.content .main .search .search-box input::-webkit-input-placeholder {
+    color:#afafaf;
+    font-style: italic;
+}
+.guest.content .main .search .search-box input:-ms-input-placeholder {
+    color:#afafaf;
+    font-style: italic;
+}
+.guest.content .main .search .search-box input::-ms-clear{
+    display: none;
+}
+.guest.content .main .search .search-box input:focus::-webkit-input-placeholder{
+    color: transparent;
+}
+.guest.content .main .search .search-box :focus::-ms-input-placeholder{
+    color:transparent;
+}
+.guest.content .main .guest-list {
+    padding-top: 33px;
+}
+.guest.content .main .guest-list ul{
+    list-style: none;
+    padding-left:0px;
+    color:#253748;
+}
+.guest.content .main .guest-list>ul>li{
+    display: block;
+    font-size:14px;
+    border-bottom:1px solid #5b8c90;
+    padding-left: 10px;
+}
+.guest.content .main .guest-list>ul>li.guest-header{
+    font-size: 18px;
+}
+.guest.content .main .guest-list>ul>li>ul{
+    display: table;
+    width:100%;
+    height: 75px;
+    font-family: poppinsregular;
+}
+.guest.content .main .guest-list>ul>li.guest-header>ul{
+    font-family: poppinsmedium;
+}
+.guest.content .main .guest-list>ul>li>ul>li{
+    text-transform: capitalize;
+    vertical-align: middle;
+}
+.guest.content .main .guest-list>ul>li>ul>li:not(:last-child){
+    display: table-cell;
+}
+.guest.content .main .guest-list>ul>li>ul>li:nth-child(1){
+    width:14%;
+}
+.guest.content .main .guest-list>ul>li>ul>li:nth-child(2){
+    width:17%;
+}
+.guest.content .main .guest-list>ul>li>ul>li:nth-child(3){
+    width:11.6%;
+}
+.guest.content .main .guest-list>ul>li>ul>li:nth-child(4){
+    width:11.7%;
+}
+.guest.content .main .guest-list>ul>li>ul>li:nth-child(5){
+    width:10.5%;
+}
+.guest.content .main .guest-list>ul>li>ul>li:nth-child(6){
+    width:100%;
+    padding-top: 20px;
+}
+.guest.content .main .guest-list>ul>li.guest-header>ul>li{
+    vertical-align: top;
+    padding-top: 18px;
+    text-transform: none;
+}
+.guest.content .main .guest-list>ul>li>ul>li div.coupon-btn{
+    background-color: #5b8c90;
+    border:1px solid #f5f5f5;
+    border-radius: 5px;
+    width: 185px;
+    height:35px;
+    color:#fff;
+    padding: 9px 24px 5px 24px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor:pointer;
+    font-family: poppinsregular;
+}
+.guest.content .main .guest-list>ul>li.guest-row:hover{
+    background-color: #253748;
+}
+.guest.content .main .guest-list>ul>li.guest-row:hover > ul{
+    color:#fff;
+    font-family: poppinsbold;
+}
+.guest.content .main .guest-list>ul>li.guest-row:hover div.coupon-btn {
+    background-color: #fff;
+    color:#253748;
+}
+.guest.content .main .guest-list>ul>li.guest-row.hidden{
+    display: none;
+}
+
+/* coupon */
+.coupon.content .main{
+    padding:21px 140px 0 140px;
+    background-color: #e4e4e4;
+}
+.coupon.content .main .print-btn{
+    font-size: 14px;
+    font-family: poppinsregular;
+    color:#fff;
+    background-color: #5b8c90;
+    border-radius: 10px;
+    width:84px;
+    height: 25px;
+    text-align: center;
+    padding:10px 0px 0px 0px;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: capitalize;
+}
+.coupon.content .main .back-link{
+    font-size:16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 21px;
+}
+.coupon.content .main .back-link a {
+    text-decoration: none;
+    font-family: poppinssemibold;
+    color:#5b8c90;
+}
+.coupon.content .main .back-link a:before{
+    content:  "<";
+    font-size: 1.4em;
+    margin-right: 12px;
+    position: relative;
+    top:3px;
+    color:#253748;
+}
+.coupon.content .main .coupon-list ul{
+    list-style: none;
+    display: table;
+    padding-left: 0;
+    font-size:0;
+}
+.coupon.content .main .coupon-list ul li.coupon-item{
+    width:24.3%;
+    max-width: 398px;
+    display: inline-block;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+    background-color: #fff;
+    margin-right: 15px;
+    margin-bottom: 20px;
+}
+.coupon.content .main .coupon-list ul li.coupon-item:nth-child(4n){
+    margin-right: 0;
+}
+.coupon.content .main .coupon-list ul li.coupon-item .coupon-container{
+    padding-top: 18px;
+}
+.coupon.content .main .coupon-list ul li.coupon-item .title {
+    font-size:18px;
+    font-weight: 500;
+    color:#253748;
+    padding-left: 19px;
+    font-family: poppinsmedium;
+}
+.coupon.content .main .coupon-list ul li.coupon-item .coupon-content {
+    display: table;
+    padding-top: 10px;
+}
+.coupon.content .main .coupon-list ul li.coupon-item .coupon-content .left-img{
+    display: table-cell;
+    width:199px;
+}
+.coupon.content .main .coupon-list ul li.coupon-item .coupon-content img{
+    width:199px;
+    height: 225px;
+}
+.coupon.content .main .coupon-list ul li.coupon-item .coupon-content .right-content {
+    display: table-cell;
+    width: 100%;
+    vertical-align: top;
+    text-align: center;
+    position: relative;
+}
+.coupon.content .main .coupon-list ul li.coupon-item .coupon-content .description{
+    font-size: 12px;
+    color:#707070;
+    padding-left: 19px;
+    padding-right: 18px;
+    text-align: left;
+    font-family: poppinsregular;
+    line-height: 1.5em;
+}
+.coupon.content .main .coupon-list ul li.coupon-item .coupon-content .print-btn{
+    margin-top: 25px;
+    margin-left: 7px;
+    position: absolute;
+    bottom:0;
+    right:54px;
+}
+.coupon.content .main .coupon-list ul li.coupon-item:hover{
+    background-color: #253748;
+}
+.coupon.content .main .coupon-list ul li.coupon-item:hover div.title{
+    color:#fff;
+}
+.coupon.content .main .coupon-list ul li.coupon-item:hover div.description{
+    color:#fff;
+}
+.coupon.content .main .coupon-list ul li.coupon-item:hover div.coupon-content div.print-btn {
+    background-color: #fff;
+    color:#253748;
+}
+
+.coupon.content .coupon-item-detail.modal{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.8);
+    overflow-y: hidden;
+}
+.coupon.content .coupon-item-detail.modal.hidden{
+    display: none;
+}
+.coupon.content .coupon-item-detail.modal .modal-content {
+    background-color: #fff;
+    margin: 85px auto;
+    margin-top:50px;
+    border: 1px solid #888;
+    width: 62.8%;
+    max-width: 1206px;
+    border-radius: 10px;
+    position: relative;
+}
+.coupon.content .coupon-item-detail.modal .modal-content .close-modal{
+    position: absolute;
+    top: -43px;
+    right:-1px;
+    color:#fff;
+    width:30px;
+    height: 30px;
+    font-size:38px;
+    text-align:center;
+    vertical-align: top;
+    line-height: 1em;
+    cursor:pointer;
+    background:url("../images/close-btn.png") no-repeat;
+}
+.coupon.content .coupon-item-detail .detail-top{
+    display:table;
+    width:100%;
+    padding-top: 32px;
+    padding-left:40px;
+    padding-right:40px;
+    box-sizing:border-box;
+}
+.coupon.content .coupon-item-detail .detail-title{
+    font-size:30px;
+    font-weight: 500;
+    color:#253748;
+    display: table-cell;
+    font-family: poppinsmedium;
+}
+.coupon.content .coupon-item-detail .detail-top-right {
+    width:100%;
+    text-align: right;
+    display: inline-block;
+}
+.coupon.content .coupon-item-detail .print-btn{
+    font-size:14px;
+}
+.coupon.content .coupon-item-detail .detail-middle{
+    display: inline-block;
+    padding:20px 40px 60px 40px;
+    width:95%;
+}
+.coupon.content .coupon-item-detail .detail-middle > div{
+    display: inline-block;
+}
+.coupon.content .coupon-item-detail .detail-img{
+    width:32.7%;
+    max-width:394px;
+    position: relative;
+    overflow: hidden;
+    height: 316px;
+    border-radius: 10px;
+}
+.coupon.content .coupon-item-detail .detail-img img{
+    display: block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    min-height: 100%;
+    min-width:100%;
+    transform: translate(-50%, -50%);
+}
+.coupon.content .coupon-item-detail .detail-content{
+    font-size:16px;
+    width:60%;
+    vertical-align: top;
+    padding-left: 59px;
+    color:#253748;
+    font-family: regular;
+}
+.coupon.content .coupon-item-detail .detail-content .gray-title{
+    font-size:16px;
+    color:#707070;
+    display: inline-block;
+    font-weight: 400;
+    font-family: poppinsregular;
+}
+.coupon.content .coupon-item-detail .detail-content .customer{
+    font-weight:600;
+    font-family: poppinssemibold;
+}
+
+.coupon.content .coupon-item-detail .detail-content .customer>div{
+    display: inline-block;
+}
+.coupon.content .coupon-item-detail .detail-content .detail-description{
+    margin-top: 25px;
+    font-family: poppinsregular;
+    line-height: 25px;
+}
+.coupon.content .coupon-item-detail .detail-content .detail-location-title{
+    margin-top:28px;
+}
+.coupon.content .coupon-item-detail .detail-content .detail-company-location{
+    font-weight:600;
+    margin-top:30px;
+    font-family: poppinssemibold;
+}
+.coupon.content .coupon-item-detail .detail-content .detail-company-location>div{
+    margin-bottom: 9px;
+}
+.coupon.content .coupon-item-detail .detail-content .detail-company-location>div:last-child{
+    margin-bottom: 0;
+}
+.coupon.content .coupon-item-detail .detail-content .redeemable{
+    margin-top: 24px;
+}
+.coupon.content .coupon-item-detail .detail-content .redeemable>div{
+    display: inline-block;
+}
+.coupon.content .coupon-item-detail .detail-content .redeemable .redeemable-text{
+    font-weight: 600;
+    font-family: poppinssemibold;
+}
+.coupon.content .coupon-item-detail .detail-bottom{
+    background-color: #eaeaea;
+    height: 432px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top:128px;
+    box-sizing: border-box;
+}
+.coupon.content .coupon-item-detail .detail-bottom .qr-img {
+    margin:0px auto;
+    text-align: center;
+}
+.coupon.content .coupon-item-detail .detail-bottom .qr-img img{
+    width:176px;
+    height:176px;
+}
+.coupon.content .coupon-item-detail .print-bg{
+    width:0;
+    height: 0;
+    border-top:solid 410px #eaeaea;
+    border-left:solid 454px #eaeaea;
+    border-right: solid 454px #eaeaea;
+    position: absolute;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    bottom:0;
+    display: none;
+}
+
+/*pripnt style*/
+@media print {
+    @page {size: A3 landscape; margin:0.05in;}
+    html,body{margin:0;padding-bottom:0;}
+    .coupon.content .banner{display: none;}
+    .coupon.content .main{display: none;}
+    .modal {
+        margin: 0;
+        padding: 0;
+        overflow: visible!important;
+    }
+    .coupon.content .coupon-item-detail.modal .modal-content{
+        margin-top:25px;
+        padding-bottom:0;
+    }
+    .coupon.content .coupon-item-detail .print-btn.preview{
+        display: none;
+    }
+    .coupon.content .coupon-item-detail.modal .modal-content .close-modal{
+        display: none;
+    }
+    .coupon.content .coupon-item-detail .detail-bottom{
+        -webkit-print-color-adjust: exact;
+        color-adjust:exact;
+        background-color: #eaeaea;
+    }
+    .coupon.content .coupon-item-detail .print-bg{
+        display: block;
+        z-index: 2;
+    }
+
+    .coupon.content .coupon-item-detail .detail-bottom .qr-img {
+        position: absolute;
+        left:42.5%;
+        z-index: 3;
+    }
+}
+

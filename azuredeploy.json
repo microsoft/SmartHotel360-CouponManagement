@@ -1,0 +1,179 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webAppName": {
+      "type": "string",
+      "defaultValue": "hotel-coupon-mgmt",
+      "metadata": {
+        "description": "The name of the web app that you wish to create."
+      }
+    },
+    "mySQLAdminLoginName": {
+      "type": "string",
+      "defaultValue": "azureuser",
+      "metadata": {
+        "description": "Admin login name cannot be 'azure_superuser', 'admin', 'administrator', 'root', 'guest' or 'public'."
+      }
+    },
+    "mySQLAdminLoginPassword": {
+      "type": "securestring",
+      "defaultValue": "",
+      "metadata": {
+        "description": "This field should be between 8 and 128 characters long. Your password must contain characters from three of the following categories – English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, etc.)."
+      }
+    },
+    "sourceCodeRepositoryURL": {
+      "type": "string",
+      "defaultValue": "https://github.com/<YourAccount>/SmartHotel360-CouponManagement",
+      "metadata": {
+        "description": "Source code repository URL"
+      }
+    },
+    "sourceCodeBranch": {
+      "type": "string",
+      "defaultValue": "master",
+      "metadata": {
+        "description": "Sourcecode Repo branch"
+      }
+    },
+    "sourceCodeManualIntegration": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Use 'true' if you are deploying from the base repo, 'false' if you are deploying from your own fork. If you're using 'false', make sure you have admin permissions to the repo. If you get an error, you should add GitHub integration to another web app manually, so that you get a GitHub access token associated with your Azure Subscription."
+      }
+    }
+  },
+  "variables": {
+    "location": "[resourceGroup().location]",
+    "webAppName": "[parameters('webAppName')]",
+    "servicePlanName": "[variables('webAppName')]",
+    "mySQLServerName": "[variables('webAppName')]",
+    "mySQLDatabaseName": "hotel_coupon"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-12-01-preview",
+      "type": "Microsoft.DBforMySQL/servers",
+      "name": "[variables('mySQLServerName')]",
+      "sku": {
+        "name": "B_Gen5_1",
+        "tier": "Basic",
+        "family": "Gen5",
+        "capacity": 1
+      },
+      "location": "[variables('location')]",
+      "properties": {
+        "administratorLogin": "[parameters('mySQLAdminLoginName')]",
+        "administratorLoginPassword": "[parameters('mySQLAdminLoginPassword')]",
+        "storageProfile": {
+          "storageMB": 5120,
+          "backupRetentionDays": 7,
+          "geoRedundantBackup": "Disabled"
+        },
+        "version": "5.7",
+        "sslEnforcement": "Disabled"
+      },
+      "resources": [
+        {
+          "apiVersion": "2017-12-01-preview",
+          "type": "databases",
+          "name": "[variables('mySQLDatabaseName')]",
+          "properties": {
+            "charset": "utf8",
+            "collation": "utf8_general_ci"
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.DBforMySQL/servers', variables('mySQLServerName'))]"
+          ]
+        },
+        {
+          "apiVersion": "2017-12-01-preview",
+          "type": "firewallRules",
+          "name": "AllowAllWindowsAzureIps",
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "0.0.0.0"
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.DBforMySQL/servers', variables('mySQLServerName'))]"
+          ]
+        }
+      ]
+    },
+    {
+      "apiVersion": "2016-09-01",
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('servicePlanName')]",
+      "kind": "app",
+      "location": "[variables('location')]",
+      "sku": {
+        "name": "B1",
+        "tier": "Basic",
+        "size": "B1",
+        "family": "B",
+        "capacity": 1
+      }
+    },
+    {
+      "apiVersion": "2016-08-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('webAppName')]",
+      "kind": "app",
+      "location": "[variables('location')]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('servicePlanName'))]",
+        "siteConfig": {
+          "AlwaysOn": true
+        }
+      },
+      "resources": [
+        {
+          "apiVersion": "2016-08-01",
+          "type": "config",
+          "name": "appsettings",
+          "properties": {
+            "SPRING_DATASOURCE_URL": "[concat('jdbc:mysql://', variables('mySQLServerName'), '.mysql.database.azure.com:3306/', variables('mySQLDatabaseName'), '?verifyServerCertificate=true&useSSL=true&requireSSL=false')]",
+            "SPRING_DATASOURCE_USERNAME": "[concat(parameters('mySQLAdminLoginName'), '@', variables('mySQLServerName'))]",
+            "SPRING_DATASOURCE_PASSWORD": "[parameters('mySQLAdminLoginPassword')]"
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+          ]
+        },
+        {
+          "apiVersion": "2016-08-01",
+          "type": "sourcecontrols",
+          "name": "web",
+          "properties": {
+            "RepoUrl": "[parameters('sourceCodeRepositoryURL')]",
+            "branch": "[parameters('sourceCodeBranch')]",
+            "IsManualIntegration": "[parameters('sourceCodeManualIntegration')]"
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites/', variables('webAppName'))]",
+            "[resourceId('Microsoft.Web/Sites/config', variables('webAppName'), 'appsettings')]"
+          ]
+        },
+        {
+          "apiVersion": "2016-08-01",
+          "name": "web",
+          "type": "config",
+          "properties": {
+            "javaVersion": "1.8",
+            "javaContainer": "TOMCAT",
+            "javaContainerVersion": "8.0"
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites/', variables('webAppName'))]",
+            "[resourceId('Microsoft.Web/Sites/sourcecontrols', variables('webAppName'), 'web')]"
+          ]
+        }
+      ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('servicePlanName'))]"
+      ]
+    }
+  ]
+}

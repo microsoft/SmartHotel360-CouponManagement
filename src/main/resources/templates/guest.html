@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Coupon Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700" rel="stylesheet"></link>
+    <link rel="stylesheet" type="text/css" href="../../css/site.css"></link>
+
+</head>
+<body style="padding-top:50px;">
+ <div class="guest content">
+     <div class="banner">
+         <div class="logo-left-clickable"></div>
+         <div class="logo-content">
+             <ul>
+                 <li>smart</li>
+                 <li>hotel</li>
+                 <li>360</li>
+             </ul>
+             <div class="bottom">
+                 coupon management
+             </div>
+         </div>
+         <div class="logout">
+             <a href="/logout">logout</a>
+         </div>
+     </div>
+     <div class="main">
+         <div class="search">
+             <div class="title">hotel guests</div>
+             <div class="search-box">
+                 <span class="search-click"></span>
+                 <input type="input" placeholder="Search hotel guests" />
+             </div>
+         </div>
+         <div class="guest-list" th:object="${guestsModel}" >
+             <ul>
+                 <li class="guest-header">
+                     <ul>
+                         <li>First Name</li>
+                         <li>Last Name</li>
+                         <li>Check-in</li>
+                         <li>Check-out</li>
+                         <li>Room Type</li>
+                         <li>&nbsp;</li>
+                     </ul>
+                 </li>
+                 <li th:each="item,i : *{guestList}" class="guest-row" >
+                     <ul>
+                         <li th:text="*{guestList[__${i.index}__].firstName}"></li>
+                         <li th:text="*{guestList[__${i.index}__].lastName}"></li>
+                         <li th:text="*{guestList[__${i.index}__].getCheckInDate()}"></li>
+                         <li th:text="*{guestList[__${i.index}__].getCheckOutDate()}"></li>
+                         <li th:text="*{guestList[__${i.index}__].roomType.typeName}"></li>
+                         <li>
+                             <input type="hidden" th:field="*{guestList[__${i.index}__].id}"/>
+                             <div class="coupon-btn">Generate coupons</div>
+                         </li>
+                     </ul>
+                 </li>
+             </ul>
+         </div>
+     </div>
+ </div>
+
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+  <script src="../../js/guest.js"></script>
+
+</body>
+</html>

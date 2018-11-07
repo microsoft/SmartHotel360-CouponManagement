@@ -96,7 +96,6 @@ body{
     background-position: 168px 45px;
     border-bottom:8px solid #253748;
     position: relative;
-    margin-left:50px;
 }
 .content .banner > div{
     display:inline-block;
@@ -190,6 +189,7 @@ div.input-box.error .error-message{
     text-align: right;
     background-image:none;
     border-bottom:0px;
+    margin-left:50px;
 }
 .login.content .banner > div{
     display:inline-block;

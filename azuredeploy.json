@@ -161,7 +161,7 @@
           "name": "web",
           "type": "config",
           "properties": {
-            "javaVersion": "1.8",
+            "javaVersion": "1.8.0_172_ZULU",
             "javaContainer": "TOMCAT",
             "javaContainerVersion": "8.0"
           },

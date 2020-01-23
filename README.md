@@ -1,3 +1,7 @@
+# **The project SmartHotel360 have been retired, we have archived it. It is no longer maintained. You still can fork the repository.**
+
+## For the latest sample references visit: https://aka.ms/tailwindtraders & https://aka.ms/rpsls 
+
 # Smart hotel Coupon web application using Spring Boot and MySQL
 
 Smart Hotel Coupon web application using Spring Boot with the following options:
